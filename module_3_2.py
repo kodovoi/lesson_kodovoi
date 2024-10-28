@@ -1,4 +1,4 @@
-def send_email(message, recipient, sender="university.help@gmail.com"):
+def send_email(message, recipient, *, sender="university.help@gmail.com"):
 
     def is_valid_email(email):
         return "@" in email and (email.endswith(".com") or email.endswith(".ru") or email.endswith(".net"))
