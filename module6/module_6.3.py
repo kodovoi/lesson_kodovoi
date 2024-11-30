@@ -37,7 +37,7 @@ class Bird(Animal):
         super().__init__(speed)
 
     def lay_eggs(self):
-        eggs_count = random.randint(1, 4)  # Генерируем случайное число яиц (от 1 до 4)
+        eggs_count = random.randint(1, 4)
         print(f"Вот {eggs_count} яйца для тебя")  # Выводим сообщение о количестве яиц
 
 class AquaticAnimal(Animal):
