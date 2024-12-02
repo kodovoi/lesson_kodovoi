@@ -1,4 +1,4 @@
-import random  # Импортируем модуль random для генерации случайных чисел
+import random
 
 class Animal:
     live = True
@@ -10,9 +10,9 @@ class Animal:
         self.speed = speed
 
     def move(self, dx, dy, dz):
-        new_z = self._cords[2] + dz * self.speed  # Вычисляем новое значение координаты z
+        new_z = self._cords[2] + dz * self.speed
         if new_z < 0:
-            print("Слишком глубоко, я не могу нырнуть :(")  # Если новое значение координаты z меньше 0, выводим сообщение
+            print("Слишком глубоко, я не могу нырнуть :(")
         else:
             self._cords[0] += dx * self.speed
             self._cords[1] += dy * self.speed
@@ -38,49 +38,49 @@ class Bird(Animal):
 
     def lay_eggs(self):
         eggs_count = random.randint(1, 4)
-        print(f"Вот {eggs_count} яйца для тебя")  # Выводим сообщение о количестве яиц
+        print(f"Вот {eggs_count} яйца для тебя")
 
 class AquaticAnimal(Animal):
-    _DEGREE_OF_DANGER = 3  # Изменяем степень опасности на 3
+    _DEGREE_OF_DANGER = 3
 
     def __init__(self, speed):
-        super().__init__(speed)  # Вызываем конструктор родительского класса
+        super().__init__(speed)
 
     def dive_in(self, dz):
-        new_z = self._cords[2] - abs(dz) * (self.speed / 2)  # Вычисляем новое значение координаты z для ныряния
+        new_z = self._cords[2] - abs(dz) * (self.speed / 2)
         if new_z < 0:
-            print("Здесь слишком глубоко, я не могу нырнуть :(")  # Если новое значение координаты z меньше 0, выводим сообщение
+            print("Здесь слишком глубоко, я не могу нырнуть :(")
         else:
-            self._cords[2] = new_z  # Обновляем координату z
+            self._cords[2] = new_z
 
 class PoisonousAnimal(Animal):
-    _DEGREE_OF_DANGER = 8  # Изменяем степень опасности на 8
+    _DEGREE_OF_DANGER = 8
 
     def __init__(self, speed):
-        super().__init__(speed)  # Вызываем конструктор родительского класса
+        super().__init__(speed)
 
 class Duckbill(Bird, AquaticAnimal, PoisonousAnimal):
-    sound = "Click-click-click"  # Атрибут класса, указывающий звук, который издает утконос
+    sound = "Click-click-click"
 
     def __init__(self, speed):
-        super().__init__(speed)  # Вызываем конструктор родительского класса
+        super().__init__(speed)
 
 # Создание объекта класса Duckbill
-db = Duckbill(10)  # Создаем объект класса Duckbill с начальной скоростью 10
+db = Duckbill(10)
 
-# Пример работы программы
-print(db.live)  # Выводим значение атрибута live (True)
-print(db.beak)  # Выводим значение атрибута beak (True)
 
-db.speak()  # Выводим звук, который издает утконос ("Click-click-click")
-db.attack()  # Выводим сообщение в зависимости от степени опасности ("Будь осторожен, я атакую тебя 0_0")
+print(db.live)
+print(db.beak)
 
-db.move(1, 2, 3)  # Изменяем координаты утконоса на (10, 20, 30)
-db.get_cords()  # Выводим текущие координаты утконоса
+db.speak()
+db.attack()
 
-db.dive_in(6)  # Изменяем координату z утконоса на 0
-db.get_cords()  # Выводим текущие координаты утконоса
+db.move(1, 2, 3)
+db.get_cords()
 
-db.lay_eggs()  # Выводим сообщение о количестве яиц, которые отложил утконос
+db.dive_in(6)
+db.get_cords()
+
+db.lay_eggs()
 
 
